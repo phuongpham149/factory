@@ -6,6 +6,15 @@ public class Production {
 	private String line;
 	private int part;
 	private String password;
+	private String idMachine;
+	
+	
+	public String getIdMachine() {
+		return idMachine;
+	}
+	public void setIdMachine(String idMachine) {
+		this.idMachine = idMachine;
+	}
 	public String getId() {
 		return id;
 	}

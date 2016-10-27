@@ -14,7 +14,15 @@ public class FixErrorManager {
 	private int status;
 	private Date downTime;
 	private String nameFixError;
+	private int count;
 	
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public Date getDownTime() {
 		return downTime;
 	}

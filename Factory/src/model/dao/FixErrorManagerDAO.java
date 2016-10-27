@@ -161,33 +161,167 @@ public class FixErrorManagerDAO {
 	}
 
 	public ArrayList<FixErrorManager> statisticalByTime() {
-		// TODO Auto-generated method stub
-		return null;
+		fixErrorManagers = new ArrayList<>();
+		
+		try {
+			con = SqlConnection.getConnection();
+			String query = "{CALL statisticalByTime()}";
+			cstmt = con.prepareCall(query);
+			rs = cstmt.executeQuery();
+			
+			while (rs.next()) {
+				FixErrorManager fixError = new FixErrorManager();
+				fixError.setId(rs.getInt(1));
+				fixError.setIdProduction(rs.getString(2));
+				fixError.setTimeCreate(rs.getDate(3));
+				fixError.setTimeFinish(rs.getDate(4));
+				fixErrorManagers.add(fixError);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			SqlConnection.closeConnection(this.con);
+			SqlConnection.closePrepareStatement(cstmt);
+			SqlConnection.closeResultSet(rs);
+		}
+		
+		return fixErrorManagers;
 	}
 
 	public ArrayList<FixErrorManager> statisticalByFixError() {
-		// TODO Auto-generated method stub
-		return null;
+		fixErrorManagers = new ArrayList<>();
+		
+		try {
+			con = SqlConnection.getConnection();
+			String query = "{CALL statisticalByFixError()}";
+			cstmt = con.prepareCall(query);
+			rs = cstmt.executeQuery();
+			
+			while (rs.next()) {
+				FixErrorManager fixError = new FixErrorManager();
+				fixError.setCount(rs.getInt(1));
+				fixError.setNameFixError(rs.getString(2));
+				fixError.setIdFixError(rs.getInt(3));;
+				fixErrorManagers.add(fixError);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			SqlConnection.closeConnection(this.con);
+			SqlConnection.closePrepareStatement(cstmt);
+			SqlConnection.closeResultSet(rs);
+		}
+		
+		return fixErrorManagers;
 	}
 
 	public ArrayList<FixErrorManager> countMachineErrorForLine() {
-		// TODO Auto-generated method stub
-		return null;
+		fixErrorManagers = new ArrayList<>();
+		
+		try {
+			con = SqlConnection.getConnection();
+			String query = "{CALL countMachineErrorForLine()}";
+			cstmt = con.prepareCall(query);
+			rs = cstmt.executeQuery();
+			
+			while (rs.next()) {
+				FixErrorManager fixError = new FixErrorManager();
+				fixError.setCount(rs.getInt(1));
+				fixError.setLine(rs.getString(2));
+				fixErrorManagers.add(fixError);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			SqlConnection.closeConnection(this.con);
+			SqlConnection.closePrepareStatement(cstmt);
+			SqlConnection.closeResultSet(rs);
+		}
+		
+		return fixErrorManagers;
 	}
 
 	public ArrayList<FixErrorManager> getDetailFixErrorByLine(String line) {
-		// TODO Auto-generated method stub
-		return null;
+		fixErrorManagers = new ArrayList<>();
+		
+		try {
+			con = SqlConnection.getConnection();
+			String query = "{CALL getDetailFixErrorByLine()}";
+			cstmt = con.prepareCall(query);
+			rs = cstmt.executeQuery();
+			
+			while (rs.next()) {
+				FixErrorManager fixError = new FixErrorManager();
+				fixError.setId(rs.getInt(1));
+				fixError.setIdProduction(rs.getString(2));
+				fixError.setDateCreate(rs.getDate(3));
+				fixError.setIdMachine(rs.getInt(4));
+				fixError.setTimeCreate(rs.getDate(5));
+				fixError.setTimeFinish(rs.getDate(6));
+				fixError.setIdFixError(rs.getInt(7));
+				fixError.setNameFixError(rs.getString(8));
+				fixErrorManagers.add(fixError);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			SqlConnection.closeConnection(this.con);
+			SqlConnection.closePrepareStatement(cstmt);
+			SqlConnection.closeResultSet(rs);
+		}
+		
+		return fixErrorManagers;
 	}
 
 	public ArrayList<FixErrorManager> getAllLine() {
-		// TODO Auto-generated method stub
-		return null;
+		fixErrorManagers = new ArrayList<>();
+		
+		try {
+			con = SqlConnection.getConnection();
+			String query = "{CALL getAllLine()}";
+			cstmt = con.prepareCall(query);
+			rs = cstmt.executeQuery();
+			
+			while (rs.next()) {
+				FixErrorManager fixError = new FixErrorManager();
+				fixError.setLine(rs.getString(1));
+				fixErrorManagers.add(fixError);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			SqlConnection.closeConnection(this.con);
+			SqlConnection.closePrepareStatement(cstmt);
+			SqlConnection.closeResultSet(rs);
+		}
+		
+		return fixErrorManagers;
 	}
 
 	public ArrayList<FixErrorManager> getDetailForLine(int line) {
-		// TODO Auto-generated method stub
-		return null;
+		fixErrorManagers = new ArrayList<>();
+		
+		try {
+			con = SqlConnection.getConnection();
+			String query = "{CALL getDetailForLine()}";
+			cstmt = con.prepareCall(query);
+			rs = cstmt.executeQuery();
+			
+			while (rs.next()) {
+				FixErrorManager fixError = new FixErrorManager();
+				fixError.setId(rs.getInt(1));
+				fixError.setIdMachine(rs.getInt(2));
+				fixErrorManagers.add(fixError);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			SqlConnection.closeConnection(this.con);
+			SqlConnection.closePrepareStatement(cstmt);
+			SqlConnection.closeResultSet(rs);
+		}
+		
+		return fixErrorManagers;
 	}
 
 }
